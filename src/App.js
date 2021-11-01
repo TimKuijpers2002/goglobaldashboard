@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+import React from "react";
+import Home from "./Pages/Home";
+import Admin from "./Pages/Admin";
+import Location from "./Pages/Location";
+import LocationSubmit from "./Pages/LocationSubmit";
+import Profile from "./Pages/Profile";
+import Report from "./Pages/Report";
+import {Route, BrowserRouter as Router} from "react-router-dom";
 import './App.css';
+import POSTAdmin from "./Pages/PostAdmin";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Route path="/" exact component={Home}/>
+      <Route path="/Admin" exact component={Admin}/>
+      <Route path="/AdminCreate" exact component={POSTAdmin}/>
+      <Route path="/Location" exact component={Location}/>
+      <Route path="/LocationSubmit" exact component={LocationSubmit}/>
+      <Route path="/Profile" exact component={Profile}/>
+      <Route path="/Report" exact component={Report}/>
+    </Router>
   );
 }
 
