@@ -5,6 +5,7 @@ import Location from "./Pages/Location";
 import LocationSubmit from "./Pages/LocationSubmit";
 import Profile from "./Pages/Profile";
 import Report from "./Pages/Report";
+import "antd/dist/antd.css";
 import {Route, BrowserRouter as Router} from "react-router-dom";
 import './App.css';
 import POSTAdmin from "./Pages/PostAdmin";
