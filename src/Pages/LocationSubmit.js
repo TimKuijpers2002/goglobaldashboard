@@ -37,10 +37,17 @@ export default function LocationSubmit() {
             render: text => <Text>{text}</Text>,
         },
         {
-            title: 'Coordinates',
-            dataIndex: 'coordinates',
-            key: 'coordinates',
-            width: 20,
+            title: 'Longitude',
+            dataIndex: 'longitude',
+            key: 'longitude',
+            width: 10,
+            render: text => <Text>{text}</Text>,
+        },
+        {
+            title: 'Latitude',
+            dataIndex: 'latitude',
+            key: 'latitude',
+            width: 10,
             render: text => <Text>{text}</Text>,
         },
         {
