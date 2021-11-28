@@ -121,7 +121,9 @@ export default function LocationSubmit() {
                         <DeleteOutlined style={{color:'red'}} onClick={()=> {
                             handleDelete(record);
                         }}/>
-                        <CheckSquareOutlined style={{color:'green'}}/>
+                        <CheckSquareOutlined style={{color:'green'}} onClick={()=> {
+                            handleAccept(record);
+                            }}/>
                         </Space>
         },
     ];
@@ -134,6 +136,18 @@ export default function LocationSubmit() {
         {
             console.log(record.locationFormId);
             axios.delete('api/locationforms/' + record.locationFormId
+        ).then(res => {
+            console.log(res);
+            });
+            window.location.reload()
+        }
+    }
+
+    const handleAccept = (record) => {
+        if(window.confirm('Are you sure?'))
+        {
+            console.log(record);
+            axios.post('api/locationformaccepted', record
         ).then(res => {
             console.log(res);
             });

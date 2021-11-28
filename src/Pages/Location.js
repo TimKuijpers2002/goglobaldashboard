@@ -10,12 +10,14 @@ const columns = [
         title: 'Id',
         dataIndex: 'locationId',
         key: 'locationId',
+        width: 5,
         render: text => <Text>{text}</Text>,
     },
     {
         title: 'Name',
         dataIndex: 'name',
         key: 'name',
+        width: 10,
         render: text => <Text>{text}</Text>,
     },
     {
@@ -36,12 +38,14 @@ const columns = [
         title: 'General Content',
         dataIndex: 'generalContent',
         key: 'generalContent',
+        width: 10,
         render: text => <Text>{text}</Text>,
     },
     {
         title: 'Facilities',
         dataIndex: 'facilities',
         key: 'facilities',
+        width: 10,
         render: facilities => (
             <Text>
                 {facilities.map(facility => {
@@ -59,6 +63,7 @@ const columns = [
         title: 'Terrains',
         dataIndex: 'terrains',
         key: 'terrains',
+        width: 10,
         render: terrains => (
             <Text>
                 {terrains.map(terrain => {
@@ -76,6 +81,7 @@ const columns = [
         title: 'Categories',
         dataIndex: 'categories',
         key: 'categories',
+        width: 10,
         render: categories => (
             <Text>
                 {categories.map(category => {
@@ -93,6 +99,7 @@ const columns = [
         title: 'Likes',
         dataIndex: 'likes',
         key: 'likes',
+        width: 10,
         render: text => <Text>{text}</Text>,
     },
 ];
