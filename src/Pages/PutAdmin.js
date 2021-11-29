@@ -1,22 +1,13 @@
 import React, {useState} from "react";
 import {Button, Form, Input, Space} from "antd";
-import {MailOutlined, SafetyCertificateOutlined, UserOutlined} from "@ant-design/icons";
 import axios from 'axios';
+import {MailOutlined, SafetyCertificateOutlined, UserOutlined} from "@ant-design/icons";
+import {Sidebar} from "../Components/Sidebar"
 
-function Modal({ closeModal, adminId}){
+export default function PostAdmin(adminId) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    const headers = {
-        'Content-Type': 'application/json'
-    }
-
-    const properties = {
-        name: name,
-        email: email,
-        password: password,
-    }
 
     const ChangeHandler = (e) => {
         switch (e.target.name) {
@@ -32,8 +23,17 @@ function Modal({ closeModal, adminId}){
             default:
         }
     }
+    const headers = {
+        'Content-Type': 'application/json'
+    }
 
-    function SubmitHandler() {
+    const properties = {
+        name: name,
+        email: email,
+        password: password,
+    }
+    function SubmitHandler(e) {
+        e.preventDefault()
         axios.put("./api/admins/" + adminId, JSON.stringify(properties) , {
             headers: headers})
             .then()
@@ -41,12 +41,8 @@ function Modal({ closeModal, adminId}){
     }
 
     return (
-    <div className="modalBackground">
-        <div className="modalContainer">
-            <div className="Header">
-                <h2>Update admin <button onClick={() => closeModal(false)}>X</button></h2>
-            </div>
-            <div className="Content">
+        <Sidebar name="Admin Update" data={
+            <div>
                 <Form>
                     <Space direction="vertical">
                         <Input name="Name" type="text" value={name} onChange={ChangeHandler} placeholder="name" prefix={<UserOutlined />}/>
@@ -55,9 +51,5 @@ function Modal({ closeModal, adminId}){
                         <Button type="primary" htmlType="submit" onClick={SubmitHandler}>Submit</Button>
                     </Space>
                 </Form>
-            </div>
-        </div>
-    </div>);
+            </div>}/>)
 }
-
-export default Modal;

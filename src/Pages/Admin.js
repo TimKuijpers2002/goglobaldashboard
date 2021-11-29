@@ -1,37 +1,55 @@
 import React, {useEffect, useState} from "react";
-import {Button, Empty, Spin, Table} from "antd";
+import {Button, Empty, Spin, Table, Space,} from "antd";
 import axios from 'axios';
-import {LoadingOutlined} from "@ant-design/icons";
-import {Sidebar} from "../Components/Sidebar"
-
-const columns = [
-    {
-        title: 'Id',
-        dataIndex: 'adminId',
-        key: 'adminId',
-    },
-    {
-        title: 'Name',
-        dataIndex: 'name',
-        key: 'name',
-    },
-    {
-        title: 'Email',
-        dataIndex: 'email',
-        key: 'email',
-    },
-    {
-        title: 'Password',
-        dataIndex: 'password',
-        key: 'password',
-    },
-];
+import {LoadingOutlined, EditOutlined} from "@ant-design/icons";
+import {Sidebar} from "../Components/Sidebar";
+import AdminModal from "../Components/AdminModal"
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 export default function Admin() {
+
+    const columns = [
+        {
+            title: 'Id',
+            dataIndex: 'adminId',
+            key: 'adminId',
+            width: 10,
+        },
+        {
+            title: 'Name',
+            dataIndex: 'name',
+            key: 'name',
+            width: 20,
+        },
+        {
+            title: 'Email',
+            dataIndex: 'email',
+            key: 'email',
+            width: 20,
+        },
+        {
+            title: 'Password',
+            dataIndex: 'password',
+            key: 'password',
+            width: 20,
+        },
+        {
+            title: 'Actions',
+            key: 'operations',
+            width: 20,
+    
+            render: (record) =>
+                        <Space size={"middle"}>
+                            <EditOutlined style={{color:'red'}} onClick={()=> {toggleVisibility(true); setAdmin(record)}}/>
+                        </Space>
+        },
+    ];
+
     const [admins, setAdmins] = useState([]);
     const [fetching, setFetching] = useState(true);
-
+    const [visibility, toggleVisibility] = useState(false);
+    const [admin, setAdmin] = useState();
+    
     const getAdmins = () =>
         axios.get("api/admins")
             .then(res => {
@@ -64,10 +82,13 @@ export default function Admin() {
 
     }
     return (
-        <Sidebar name="Admin" data={
+        <Sidebar name={"Admin"} data={
             <div>
                 <Button onClick={() => {window.location.pathname = "/AdminCreate"}}>Create admin</Button>
                 {renderAdmins()}
+                <div >
+                    {visibility && <AdminModal closeModal = {toggleVisibility} adminId={admin.adminId} />}
+                </div>
             </div>
         }/>
     );
