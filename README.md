@@ -3,9 +3,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Installations
-
+- Node.js is required for this project, install it before going forward.
+To install in workspace, run the following command: `npm install` or `npm i`
 - For this project, the library AntD(esign) is used for CSS/HTML.
-To install this, use the following command: `npm install antd`.
+To install this, run the following command: `npm install antd`.
 
 - Example of import
 `import { Button, DatePicker } from 'antd';`
