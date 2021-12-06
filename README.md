@@ -2,6 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Installations
+
+- For this project, the library AntD(esign) is used for CSS/HTML.
+To install this, use the following command: `npm install antd`.
+
+- Example of import
+`import { Button, DatePicker } from 'antd';`
+
+
 ## Available Scripts
 
 In the project directory, you can run:
