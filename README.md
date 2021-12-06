@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Installations
 - Node.js is required for this project, install it before going forward.
-To install in workspace, run the following command: `npm install` or   `npm i`
+To install in workspace, run the following command: `npm install`/`npm i`
 - For this project, the library AntD(esign) is used for CSS/HTML.
 To install this, run the following command: `npm install antd`.
 
