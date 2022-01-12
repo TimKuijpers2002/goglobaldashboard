@@ -2,17 +2,10 @@ import React from 'react'
 import Text from "antd/es/typography/Text";
 import {Tag} from "antd";
 
-export default function LocationFormColumns(){
+export default function LocationColumn(){
 
     const staticWidth = "auto"
     return [
-        {
-            title: 'Id',
-            dataIndex: 'locationId',
-            key: 'locationId',
-            width: "auto",
-            render: text => <Text>{text}</Text>,
-        },
         {
             title: 'Name',
             dataIndex: 'name',
