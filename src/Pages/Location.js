@@ -2,107 +2,8 @@ import React, {useEffect, useState} from "react";
 import {Sidebar} from "../Components/Sidebar";
 import {LoadingOutlined} from "@ant-design/icons";
 import axios from 'axios';
-import {Empty, Spin, Table, Tag} from "antd";
-import Text from "antd/es/typography/Text";
-
-const columns = [
-    {
-        title: 'Id',
-        dataIndex: 'locationId',
-        key: 'locationId',
-        width: "auto",
-        render: text => <Text>{text}</Text>,
-    },
-    {
-        title: 'Name',
-        dataIndex: 'name',
-        key: 'name',
-        width: "auto",
-        render: text => <Text>{text}</Text>,
-    },
-    {
-        title: 'Longitude',
-        dataIndex: 'longitude',
-        key: 'longitude',
-        width: "auto",
-        render: text => <Text>{text}</Text>,
-    },
-    {
-        title: 'Latitude',
-        dataIndex: 'latitude',
-        key: 'latitude',
-        width: "auto",
-        render: text => <Text>{text}</Text>,
-    },
-    {
-        title: 'General Content',
-        dataIndex: 'generalContent',
-        key: 'generalContent',
-        width: "auto",
-        render: text => <Text>{text}</Text>,
-    },
-    {
-        title: 'Facilities',
-        dataIndex: 'facilities',
-        key: 'facilities',
-        width: "auto",
-        render: facilities => (
-            <Text>
-                {facilities.map(facility => {
-                    let color = 'geekblue';
-                    return (
-                        <Tag color={color} key={facility.name}>
-                            {facility.name.toUpperCase()}
-                        </Tag>
-                    );
-                })}
-            </Text>
-        ),
-    },
-    {
-        title: 'Terrains',
-        dataIndex: 'terrains',
-        key: 'terrains',
-        width: "auto",
-        render: terrains => (
-            <Text>
-                {terrains.map(terrain => {
-                    let color = 'geekblue';
-                    return (
-                        <Tag color={color} key={terrain.name}>
-                            {terrain.name.toUpperCase()}
-                        </Tag>
-                    );
-                })}
-            </Text>
-        ),
-    },
-    {
-        title: 'Categories',
-        dataIndex: 'categories',
-        key: 'categories',
-        width: "auto",
-        render: categories => (
-            <Text>
-                {categories.map(category => {
-                    let color = 'geekblue';
-                    return (
-                        <Tag color={color} key={category.name}>
-                            {category.name.toUpperCase()}
-                        </Tag>
-                    );
-                })}
-            </Text>
-        ),
-    },
-    {
-        title: 'Likes',
-        dataIndex: 'likes',
-        key: 'likes',
-        width: "auto",
-        render: text => <Text>{text}</Text>,
-    },
-];
+import {Empty, Spin, Table} from "antd";
+import LocationColumns from "../Components/LocationColumn"
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
@@ -132,7 +33,7 @@ export default function Location() {
         }
         return <Table
             dataSource={locations}
-            columns={columns}
+            columns={LocationColumns()}
             bordered
             title={() => 'Locations'}
             pagination={{ pageSize: 50 }}
