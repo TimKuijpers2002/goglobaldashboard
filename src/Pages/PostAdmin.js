@@ -6,6 +6,8 @@ import axios from 'axios';
 import {MailOutlined, SafetyCertificateOutlined, UserOutlined} from "@ant-design/icons";
 import {Sidebar} from "../Components/Sidebar"
 import ErrorBoundary from "../ErrorHandling/ErrorBoundary";
+import SuccesNotifier from "../ErrorHandling/SuccesNotifier"
+import ErrorNotifier from "../ErrorHandling/ErrorNotifier"
 
 toast.configure();
 export default function PostAdmin() {
@@ -29,30 +31,6 @@ export default function PostAdmin() {
         }
     }
 
-    const notifySucces = (message) => {
-        toast.success(message, {
-            position: "top-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-    });
-}
-
-const notifyError = (message) => {
-    toast.error(message, {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-});
-}
-
     const headers = {
         'Content-Type': 'application/json'
     }
@@ -71,17 +49,17 @@ const notifyError = (message) => {
             headers: headers})
             .then(function (res) {
                 if(res.status === 200)
-                notifySucces("Admin succesfully created!");
+                SuccesNotifier("Admin succesfully created!");
             })
             .catch(function (error) {
                 console.log(error.response.status)
                 if (error.response) {
                     //console.log(error.response.status)
                     if(error.response.status === 409)
-                    notifyError("Another admin with this email already exists!");
+                    ErrorNotifier("Another admin with this email already exists!");
                 }
             });
-        }
+    }
 
     function ValidateInput(name, email, password){
         if(!name || !email || !password){

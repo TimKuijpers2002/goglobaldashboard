@@ -40,7 +40,7 @@ export default function Admin() {
     
             render: (record) =>
                         <Space size={"middle"}>
-                            <EditOutlined style={{color:'red'}} onClick={()=> {toggleVisibility(true); setAdmin(record)}}/>
+                            <EditOutlined style={{color:'green'}} onClick={()=> {toggleVisibility(true); setAdmin(record)}}/>
                             <DeleteOutlined style={{color:'red'}} onClick={()=> {
                             handleDelete(record);
                         }}/>

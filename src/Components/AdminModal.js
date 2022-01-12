@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Button, Form, Input, Space} from "antd";
 import {MailOutlined, SafetyCertificateOutlined, UserOutlined} from "@ant-design/icons";
 import axios from 'axios';
+import ErrorNotifier from "../ErrorHandling/ErrorNotifier"
 
 function Modal({ closeModal, adminId}){
     const [name, setName] = useState('');
@@ -36,9 +37,17 @@ function Modal({ closeModal, adminId}){
     function SubmitHandler() {
         axios.put("./api/admins/" + adminId, JSON.stringify(properties) , {
             headers: headers})
-            .then()
-            .catch(err => console.log(err))
-            window.location.reload()
+            .then(function (res) {
+                if(res.status === 200)
+                window.location.reload()
+            })
+            .catch(function (error) {
+                if (error.response) {
+                    //console.log(error.response.status)
+                    if(error.response.status === 409)
+                    ErrorNotifier("Another admin with this email already exists!");
+                }
+            });
     }
 
     return (

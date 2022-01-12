@@ -33,10 +33,15 @@ export default function LocationFormColumns(handleDelete, handleAccept){
 
     const locationFormWithContent = LocationColumn();
     function isNotContent(value) {
-        return value !== 'General Content'
+        return value !== 'General Content' 
+      }
+
+    function isNotLikes(value) {
+        return value !== 'Likes' 
       }
       
-    const locationForm = locationFormWithContent.filter((a)=> isNotContent(a.title));
+    const locationFormWithLikes = locationFormWithContent.filter((a)=> isNotContent(a.title));
+    const locationForm = locationFormWithLikes.filter((a)=> isNotLikes(a.title));
 
     const actions = [
         {
