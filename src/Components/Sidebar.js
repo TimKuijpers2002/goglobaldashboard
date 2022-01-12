@@ -1,36 +1,41 @@
 import React, {useState} from "react";
+import {NavLink } from "react-router-dom";
 import {Breadcrumb, Layout, Menu} from "antd";
 import {EnvironmentOutlined, HomeOutlined, InboxOutlined, TeamOutlined, UserOutlined} from "@ant-design/icons";
 import Sider from "antd/es/layout/Sider";
 const {Content, Footer, Header} = Layout;
 
 
-export const Sidebar = (props) => {
+export function Sidebar(props) {
+
     const [collapsed, setCollapsed] = useState(false);
+    // const sideBarMenuKey = useSelector(
+    //     state => state.currentComponetReducer.sideBarMenuItemKey
+    //   );
 
     return (
         <Layout style={{ minHeight: '100vh' }}>
             <Sider collapsible collapsed={collapsed}
                    onCollapse={setCollapsed}>
                 <div className="logo" />
-                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                    <Menu.Item key="1" icon={<HomeOutlined />} onClick={() => {window.location.pathname = "/"}}>
-                        Home
+                <Menu theme="dark" selectedKeys ={['1']} mode="inline">
+                    <Menu.Item key="1" icon={<HomeOutlined />}>
+                    <NavLink to="/">Home</NavLink>
                     </Menu.Item>
-                    <Menu.Item key="2" icon={<TeamOutlined />} onClick={() => {window.location.pathname = "/Admin"}}>
-                        Admins
+                    <Menu.Item key="2" icon={<TeamOutlined />}>
+                    <NavLink to="/Admin">Admins</NavLink>
                     </Menu.Item>
-                    <Menu.Item key="3" icon={<InboxOutlined />} onClick={() => {window.location.pathname = "/LocationSubmit"}}>
-                        Location submits
+                    <Menu.Item key="3" icon={<InboxOutlined />}>
+                    <NavLink to="/LocationSubmit">Location submits</NavLink>
                     </Menu.Item>
-                    <Menu.Item key="4" icon={<InboxOutlined />} onClick={() => {window.location.pathname = "/Report"}}>
-                        Reports
+                    <Menu.Item key="4" icon={<InboxOutlined />}>
+                    <NavLink to="/Report">Reports</NavLink>
                     </Menu.Item>
-                    <Menu.Item key="5" icon={<UserOutlined />} onClick={() => {window.location.pathname = "/Profile"}}>
-                        Profile
+                    <Menu.Item key="5" icon={<UserOutlined />}>
+                    <NavLink to="/Profile">Profile</NavLink>
                     </Menu.Item>
-                    <Menu.Item key="6" icon={<EnvironmentOutlined />} onClick={() => {window.location.pathname = "/Location"}}>
-                        Locations
+                    <Menu.Item key="6" icon={<EnvironmentOutlined />}>
+                    <NavLink to="/Location">Locations</NavLink>
                     </Menu.Item>
                 </Menu>
             </Sider>

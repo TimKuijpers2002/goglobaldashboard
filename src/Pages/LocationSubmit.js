@@ -12,56 +12,56 @@ export default function LocationSubmit() {
             title: 'Id',
             dataIndex: 'locationFormId',
             key: 'locationFormId',
-            width: 8,
+            width: "auto",
             render: text => <Text>{text}</Text>,
         },
         {
             title:'Submitter',
             dataIndex: ['baseForm', 'nameSubmitter'],
             key:'nameSubmitter',
-            width: 10,
+            width: "auto",
             render: text => <Text>{text}</Text>,
         },
         {
             title:'Email submitter',
             dataIndex: ['baseForm', 'emailSubmitter'],
             key:'emailSubmitter',
-            width: 15,
+            width: "auto",
             render: text => <Text>{text}</Text>,
         },
         {
             title:'Content',
             dataIndex: ['baseForm', 'formContent'],
             key:'formContent',
-            width: 20,
+            width: "auto",
             render: text => <Text>{text}</Text>,
         },
         {
             title: 'Longitude',
             dataIndex: 'longitude',
             key: 'longitude',
-            width: 10,
+            width: "auto",
             render: text => <Text>{text}</Text>,
         },
         {
             title: 'Latitude',
             dataIndex: 'latitude',
             key: 'latitude',
-            width: 10,
+            width: "auto",
             render: text => <Text>{text}</Text>,
         },
         {
             title: 'Name',
             dataIndex: 'name',
             key: 'name',
-            width: 15,
+            width: "auto",
             render: text => <Text>{text}</Text>,
         },
         {
             title: 'Facilities',
             dataIndex: 'facilities',
             key: 'facilities',
-            width: 9,
+            width: "auto",
             render: facilities => (
                 <Text>
                     {facilities.map(facility => {
@@ -79,7 +79,7 @@ export default function LocationSubmit() {
             title: 'Categories',
             dataIndex: 'categories',
             key: 'categories',
-            width: 11,
+            width: "auto",
             render: categories => (
                 <Text>
                     {categories.map(category => {
@@ -97,7 +97,7 @@ export default function LocationSubmit() {
             title: 'Terrains',
             dataIndex: 'terrains',
             key: 'terrains',
-            width: 10,
+            width: "auto",
             render: terrains => (
                 <Text>
                     {terrains.map(terrain => {
@@ -114,7 +114,7 @@ export default function LocationSubmit() {
         {
             title: 'Actions',
             key: 'operations',
-            width: 10,
+            width: "auto",
     
             render: (record) =>
                         <Space size={"middle"}>

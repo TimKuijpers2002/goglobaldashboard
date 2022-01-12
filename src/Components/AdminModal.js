@@ -38,6 +38,7 @@ function Modal({ closeModal, adminId}){
             headers: headers})
             .then()
             .catch(err => console.log(err))
+            window.location.reload()
     }
 
     return (

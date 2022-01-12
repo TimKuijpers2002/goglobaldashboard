@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Button, Empty, Spin, Table, Space,} from "antd";
 import axios from 'axios';
-import {LoadingOutlined, EditOutlined} from "@ant-design/icons";
+import {LoadingOutlined, EditOutlined, DeleteOutlined} from "@ant-design/icons";
 import {Sidebar} from "../Components/Sidebar";
 import AdminModal from "../Components/AdminModal"
 
@@ -41,6 +41,9 @@ export default function Admin() {
             render: (record) =>
                         <Space size={"middle"}>
                             <EditOutlined style={{color:'red'}} onClick={()=> {toggleVisibility(true); setAdmin(record)}}/>
+                            <DeleteOutlined style={{color:'red'}} onClick={()=> {
+                            handleDelete(record);
+                        }}/>
                         </Space>
         },
     ];
@@ -63,6 +66,18 @@ export default function Admin() {
         getAdmins().then(r => console.log(r));
     }, []);
 
+    const handleDelete = (record) => {
+        if(window.confirm('Are you sure?'))
+        {
+            console.log(record.adminId);
+            axios.delete('api/admins/' + record.adminId
+        ).then(res => {
+            console.log(res);
+            });
+        }
+        window.location.reload()
+    }
+
     const renderAdmins = () => {
         if(fetching){
             return <Spin indicator={antIcon} />
@@ -78,13 +93,14 @@ export default function Admin() {
             pagination={{ pageSize: 50 }}
             scroll={{ y: 240 }}
             rowKey = {(admin) => admin.id}
+            id={"admin-table"}
         />;
 
     }
     return (
-        <Sidebar name={"Admin"} data={
+        <Sidebar key={2} name={"Admin"} data={
             <div>
-                <Button onClick={() => {window.location.pathname = "/AdminCreate"}}>Create admin</Button>
+                <Button name="add-admin-btn" onClick={() => {window.location.pathname = "/AdminCreate"}}>Create admin</Button>
                 {renderAdmins()}
                 <div >
                     {visibility && <AdminModal closeModal = {toggleVisibility} adminId={admin.adminId} />}
